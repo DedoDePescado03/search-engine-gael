@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine - Big Data</title>
+</head>
+<!--<body background="https://i.scdn.co/image/ab67616d00001e022d0ebcc48bdba10888e3b0f2">-->
+    <body>
+    <div style="text-align: center;">
+        <h1>Gugul</h1>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <form method="post">
+            <input type="text" placeholder="Search some stuff twin..." name="query" value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    {% if query %}
+        <h2>Results for: {{ query }}</h2>
+
+        {% if results %}
+            <h4>Found {{ len_results }} documents</h4>
+            {% for result in results %}
+            <div class="result">
+                <h3><a href="{{ result.source }}">{{ result.title | safe }}</a></h3>
+                <p>Score: {{ result.score }}</p>
+                <p>{{ result.text | safe }}</p>
+            </div>
+            {% endfor %}
+            <br>
+            <br>
+            <br>
+            <div class="stats">
+                <p>Total documents: {{ total_docs }}</p>
+                <p>Vocabulary size: {{ vocab_size }}</p>
+                <p>Search time: {{ search_time }} seconds</p>
+            </div>
+
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>
