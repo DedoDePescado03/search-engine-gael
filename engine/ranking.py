@@ -49,7 +49,7 @@ class BM25:
         Returns:
             list: List of (doc_id, score) tuples sorted from highest to lowest score.
         """
-        scores = {}  #Score accumulator per document: {doc_id → total_score}
+        scores = {}  #Score accumulator per document: {doc_id -> total_score}
 
         for token in query_tokens:
 
@@ -57,7 +57,7 @@ class BM25:
             if token not in self.index:
                 continue
 
-            postings = self.index[token]  #{doc_id → frequency} for this term
+            postings = self.index[token]  #{doc_id -> frequency} for this term
 
             #number of documents containing the term
             df = len(postings)

@@ -9,10 +9,10 @@ class InvertedIndex:
     """
 
     def __init__(self):
-        #Main index: term → {doc_id → frequency}
+        #Main index: term → {doc_id -> frequency}
         self.index = {}
 
-        #Length of each document in tokens: {doc_id → num_tokens}
+        #Length of each document in tokens: {doc_id -> num_tokens}
         #Used by BM25 to normalize scores by document length.
         self.doc_lengths = {}
 
